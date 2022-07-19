@@ -57,4 +57,4 @@ def get_all_games():
     """
     Returns a list of all game objects in database.
     """
-    pass
+    return records
