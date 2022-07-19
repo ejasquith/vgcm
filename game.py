@@ -3,6 +3,9 @@ Create game objects to represent items in a user's collection.
 
 Classes:
     Game
+
+Methods:
+    Listify
 """
 
 
