@@ -32,6 +32,9 @@ def format_table_output(games):
 
 
 def main():
+    """
+    Main program loop
+    """
     print(LOGO)
     print(WELCOME_MESSAGE)
                             
