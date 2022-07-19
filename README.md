@@ -10,3 +10,16 @@ The aim of this project is to provide a simple application for a video game coll
 - As a user, I want to remove games from my collection
 - As a user, I want to view my collection
 - As a user, I want to search, sort, and filter my collection
+
+## Categories
+
+In order to sort the collection, each game must have a number of categories that it can be searched by.  
+
+These will include:
+- Title (eg. Fallout: New Vegas)
+- Genre (eg. RPG)
+- Publisher (eg. Bethesda Softworks)
+- Developer (eg. Obsidian Entertainment)
+- Platform (eg. Xbox 360)
+- Release Date (eg. 22/10/2010)
+- Purchase Date (eg. 03/06/2022)
