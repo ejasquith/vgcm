@@ -8,10 +8,23 @@ Methods:
     get_all_games
 """
 
+from game import Game
+from datetime import datetime
+
 # Connect to DB
 # Using Python data structures during development
 
-records = []
+records = [
+    Game("Fallout: New Vegas", "RPG", "Bethesda Softworks",
+         "Obsidian Entertainment", "Xbox 360",
+         datetime(2010, 10, 22), datetime(2022, 6, 3)),
+    Game("The Outer Worlds", "RPG", "Private Division",
+         "Obsidian Entertainment", "PC",
+         datetime(2019, 10, 25), datetime(2022, 7, 17)),
+    Game("Sonic the Hedgehog", "Platformer", "Sega",
+         "Sonic Team", "Sega Genesis",
+         datetime(1991, 6, 23), datetime(2012, 4, 18))
+]
 
 
 def create_game(title, genre, publisher, developer,
