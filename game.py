@@ -36,3 +36,12 @@ class Game:
         self.platform = platform
         self.release_date = release_date
         self.purchase_date = purchase_date
+
+    def listify(self):
+        """
+        Returns the objects properties as a list.
+        """
+        return [self.title, self.genre, self.publisher,
+                self.developer, self.platform,
+                self.release_date.strftime("%d/%m/%Y"),
+                self.purchase_date.strftime("%d/%m/%Y")]
