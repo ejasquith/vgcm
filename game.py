@@ -42,7 +42,7 @@ class Game:
 
     def listify(self):
         """
-        Returns the objects properties as a list.
+        Returns the object's properties as a list.
         """
         return [self.title, self.genre, self.publisher,
                 self.developer, self.platform,

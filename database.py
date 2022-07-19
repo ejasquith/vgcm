@@ -57,4 +57,4 @@ def get_all_games():
     """
     Returns a list of all game objects in database.
     """
-    return [record.listify() for record in records]
+    return records

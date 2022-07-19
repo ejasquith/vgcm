@@ -18,8 +18,17 @@ MENU = """
 3) Search for a game in your collection
 4) Remove a game from your collection
 5) Exit
-
 > """
+
+
+def format_table_output(games):
+    """
+    Formats a list of games into a table
+    """
+    games_properties = [game.listify() for game in games]
+    return tabulate(games_properties,
+                    headers=["Title", "Genre", "Publisher", "Developer",
+                             "Platform", "Release Date", "Purchase Date"])
 
 
 def main():
@@ -32,7 +41,7 @@ def main():
             pass
         elif user_input == "2":
             # Display games
-            pass
+            print("\n"+format_table_output(database.get_all_games()))
         elif user_input == "3":
             # Search games
             pass
