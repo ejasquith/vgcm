@@ -1,5 +1,11 @@
 """
 Handle connection to PostrgreSQL database.
+
+Methods:
+    create_game
+    delete_game
+    find_game
+    get_all_games
 """
 
 # Connect to DB
