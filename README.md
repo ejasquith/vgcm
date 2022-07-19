@@ -9,4 +9,4 @@ The aim of this project is to provide a simple application for a video game coll
 - As a user, I want to add games to my collection
 - As a user, I want to remove games from my collection
 - As a user, I want to view my collection
-- As a user, I want to search and filter my collection
+- As a user, I want to search, sort, and filter my collection
