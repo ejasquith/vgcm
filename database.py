@@ -14,14 +14,16 @@ Methods:
 records = []
 
 
-def create_game(title, publisher, platform):
+def create_game(title, genre, publisher, developer,
+                platform, release_date, purchase_date):
     """
     Creates game object with given parameters and inserts into database
     """
     pass
 
 
-def delete_game(title, publisher, platform):
+def delete_game(title, genre, publisher, developer,
+                platform, release_date, purchase_date):
     """
     Finds and deletes game with given parameters.
     If no game exists, returns None
@@ -29,7 +31,8 @@ def delete_game(title, publisher, platform):
     pass
 
 
-def find_game(title, publisher, platform):
+def find_game(title, genre, publisher, developer,
+              platform, release_date, purchase_date):
     """
     Returns game objects that match given parameters in a list.
     Parameters are optional but at least one must be given
