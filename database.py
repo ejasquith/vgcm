@@ -44,11 +44,17 @@ def delete_game(title, genre, publisher, developer,
     pass
 
 
-def find_game(title, genre, publisher, developer,
-              platform, release_date, purchase_date):
+def find_game(**kwargs):
     """
-    Returns game objects that match given parameters in a list.
+    Returns game objects that match given parameters.
     Parameters are optional but at least one must be given
+
+    Accepted parameters:
+        title : str
+        genre : str
+        publisher : str
+        developer : str
+        platform : str
     """
     pass
 
