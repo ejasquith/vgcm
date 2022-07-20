@@ -8,13 +8,13 @@ Methods:
     get_all_games
 """
 
-from game import Game
 from datetime import datetime
+from game import Game
 
 # Connect to DB
 # Using Python data structures during development
 
-records = [
+_records = [
     Game("Fallout: New Vegas", "RPG", "Bethesda Softworks",
          "Obsidian Entertainment", "Xbox 360",
          datetime(2010, 10, 22), datetime(2022, 6, 3)),
@@ -32,11 +32,10 @@ def create_game(title, genre, publisher, developer,
     """
     Creates game object with given parameters and inserts into database
     """
-    records.append(
+    _records.append(
         Game(title, genre, publisher, developer,
              platform, release_date, purchase_date)
     )
-    pass
 
 
 def delete_game(title, genre, publisher, developer,
@@ -68,4 +67,4 @@ def get_all_games():
     """
     Returns a list of all game objects in database.
     """
-    return records
+    return _records
