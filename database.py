@@ -32,6 +32,10 @@ def create_game(title, genre, publisher, developer,
     """
     Creates game object with given parameters and inserts into database
     """
+    records.append(
+        Game(title, genre, publisher, developer,
+             platform, release_date, purchase_date)
+    )
     pass
 
 
@@ -56,6 +60,7 @@ def find_game(**kwargs):
         developer : str
         platform : str
     """
+    # Use SQL where statements to easily filter
     pass
 
 
