@@ -70,11 +70,22 @@ class Database:
         """
         return self._records
 
-    def load_file(self, file):
+    def load_file(self, file_name):
         """
         Loads _records attribute from json file
         """
-        pass
+        self._records = []
+
+        file = open(f"{file_name}.json", "r")
+
+        for record in file:
+            json_dict = json.loads(record)
+            game = Game(json_dict.title, json_dict.genre, json_dict.publisher,
+                        json_dict.developer, json_dict.platform,
+                        datetime(json_dict.release_date), datetime(json_dict.purchase_date))
+            self._records.append(game)
+        
+        file.close()
 
     def save_file(self, file_name):
         """
