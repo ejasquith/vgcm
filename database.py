@@ -5,6 +5,7 @@ Classes:
     Database
 """
 
+import json
 from datetime import datetime
 from game import Game
 
@@ -71,12 +72,15 @@ class Database:
 
     def load_file(self, file):
         """
-        Loads _records attribute from csv file
+        Loads _records attribute from json file
         """
         pass
 
     def save_file(self, file_name):
         """
-        Saves records to csv file
+        Saves records to json file
         """
-        pass
+        file = open(f"{file_name}.json", "x")
+        for record in self._records:
+            file.write(json.dumps(record))
+        file.close()
