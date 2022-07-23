@@ -1,5 +1,5 @@
 from tabulate import tabulate
-import database
+from database import Database
 
 LOGO = """
  _    ________________  ___
@@ -37,6 +37,8 @@ def main():
     """
     print(LOGO)
     print(WELCOME_MESSAGE)
+
+    database = Database()
                             
     while (user_input := input(MENU)) != "5":
         if user_input == "1":

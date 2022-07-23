@@ -24,7 +24,7 @@ class Database:
         save_file
     """
 
-    def __init__(self, file):
+    def __init__(self, file=None):
         if file is not None:
             # Parse file and load
             self.load_file(file)
