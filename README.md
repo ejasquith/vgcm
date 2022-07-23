@@ -23,3 +23,8 @@ These will include:
 - Platform (eg. Xbox 360)
 - Release Date (eg. 22/10/2010)
 - Purchase Date (eg. 03/06/2022)
+
+# Credits
+
+- Code to serialize objects with datetime attributes from user12642493 on StackOverflow
+    - [https://stackoverflow.com/questions/3768895/how-to-make-a-class-json-serializable](https://stackoverflow.com/questions/3768895/how-to-make-a-class-json-serializable)
