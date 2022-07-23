@@ -82,5 +82,12 @@ class Database:
         """
         file = open(f"{file_name}.json", "x")
         for record in self._records:
-            file.write(json.dumps(record))
+            file.write(
+                # Code from user12642493 on StackOverflow to
+                # serialize object with datetime attribute
+                # https://stackoverflow.com/questions/3768895/how-to-make-a-class-json-serializable
+                json.dumps(record, default=lambda o:
+                           o.isoformat() if (isinstance(o, datetime)) else o.__dict__,
+                           sort_keys=True, indent=4)
+            )
         file.close()
