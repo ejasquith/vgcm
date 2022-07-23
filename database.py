@@ -76,16 +76,23 @@ class Database:
         """
         self._records = []
 
-        file = open(f"{file_name}.json", "r")
+        try:
+            file = open(f"{file_name}.json", "r")
+        except IOError as error:
+            print(error.strerror)
+            return
 
-        for record in file:
-            json_dict = json.loads(record)
-            game = Game(json_dict.title, json_dict.genre, json_dict.publisher,
-                        json_dict.developer, json_dict.platform,
-                        datetime(json_dict.release_date), datetime(json_dict.purchase_date))
-            self._records.append(game)
-        
-        file.close()
+        try:
+            for record in file:
+                json_dict = json.loads(record)
+                game = Game(json_dict.title, json_dict.genre, json_dict.publisher,
+                            json_dict.developer, json_dict.platform,
+                            datetime(json_dict.release_date), datetime(json_dict.purchase_date))
+                self._records.append(game)
+        except Exception:
+            print("Data not in correct format. Please check the file you are trying to load.")
+        finally:
+            file.close()
 
     def save_file(self, file_name):
         """
