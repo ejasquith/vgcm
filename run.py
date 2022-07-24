@@ -5,10 +5,10 @@ from database import Database
 LOGO = """
  _    ________________  ___
 | |  / / ____/ ____/  |/  /
-| | / / / __/ /   / /|_/ / 
-| |/ / /_/ / /___/ /  / /  
-|___/\____/\____/_/  /_/   
-                           
+| | / / / __/ /   / /|_/ /
+| |/ / /_/ / /___/ /  / /
+|___/\____/\____/_/  /_/
+
 """
 
 WELCOME_MESSAGE = "Welcome to VGCM - Video Game Collection Manager"
