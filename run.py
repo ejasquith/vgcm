@@ -115,7 +115,7 @@ def main():
             pass
         else:
             # Invalid input
-            pass
+            print("Invalid input. Please enter a number 1-5")
 
 
 main()
