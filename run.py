@@ -1,3 +1,4 @@
+from datetime import datetime
 from tabulate import tabulate
 from database import Database
 
@@ -31,6 +32,37 @@ def format_table_output(games):
                              "Platform", "Release Date", "Purchase Date"])
 
 
+def check_valid_date(string):
+    """
+    Checks if a string is a valid date in format DD/MM/YYYY.
+    Raises ValueError if invalid
+    Returns original string
+    """
+    try:
+        datetime.strptime(string, "%d/%m/%Y")
+    except ValueError as verr:
+        # Raises an exception with custom message
+        # from keyword indicates direct cause
+        raise ValueError(
+            "Date in invalid format. Should be in format DD/MM/YYYY"
+        ) from verr
+    else:
+        return string
+
+
+def check_valid_string(string):
+    """
+    Checks if a string is empty
+    Raises ValueError if empty
+    Returns original string
+    """
+    # Empty strings are falsy
+    if not string:
+        raise ValueError("String cannot be empty.")
+    else:
+        return string
+
+
 def main():
     """
     Main program loop
@@ -39,7 +71,7 @@ def main():
     print(WELCOME_MESSAGE)
 
     database = Database()
-                            
+
     while (user_input := input(MENU)) != "5":
         if user_input == "1":
             # Add game
