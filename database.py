@@ -32,11 +32,11 @@ class Database:
         else:
             self._records = []
 
-    def create_game(self, title, genre, publisher, developer,
-                    platform, release_date, purchase_date):
+    def create_game(self, attr_list):
         """
         Creates game object with given parameters and inserts into database
         """
+        title, genre, publisher, developer, platform, release_date, purchase_date = attr_list
         self._records.append(
             Game(title, genre, publisher, developer,
                  platform, release_date, purchase_date)

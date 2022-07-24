@@ -36,10 +36,10 @@ def check_valid_date(string):
     """
     Checks if a string is a valid date in format DD/MM/YYYY.
     Raises ValueError if invalid
-    Returns original string
+    Returns datetime object from original string
     """
     try:
-        datetime.strptime(string, "%d/%m/%Y")
+        date = datetime.strptime(string, "%d/%m/%Y")
     except ValueError as verr:
         # Raises an exception with custom message
         # from keyword indicates direct cause
@@ -47,7 +47,7 @@ def check_valid_date(string):
             "Date in invalid format. Should be in format DD/MM/YYYY"
         ) from verr
     else:
-        return string
+        return date
 
 
 def check_valid_string(string):
@@ -63,6 +63,33 @@ def check_valid_string(string):
         return string
 
 
+def prompt_game_details_input():
+    """
+    Prompts user to enter details for new Game object
+    Returns list of inputted values
+    """
+    valid = False
+
+    while not valid:
+        values = []
+        print("Enter game details:")
+        try:
+            values.append(check_valid_string(input("Title: ")))
+            values.append(check_valid_string(input("Genre: ")))
+            values.append(check_valid_string(input("Publisher: ")))
+            values.append(check_valid_string(input("Developer: ")))
+            values.append(check_valid_string(input("Platform: ")))
+            values.append(check_valid_date(input("Release date: ")))
+            values.append(check_valid_date(input("Purchase date: ")))
+
+            valid = True
+        except ValueError as verr:
+            print(f"Invalid input: {verr}")
+            print("Please try again.")
+
+    return values
+
+
 def main():
     """
     Main program loop
@@ -74,8 +101,8 @@ def main():
 
     while (user_input := input(MENU)) != "5":
         if user_input == "1":
-            # Add game
-            pass
+            values = prompt_game_details_input()
+            database.create_game(values)
         elif user_input == "2":
             # Display games
             print("\n"+format_table_output(database.get_all_games()))
