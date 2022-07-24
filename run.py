@@ -101,6 +101,7 @@ def main():
 
     while (user_input := input(MENU)) != "5":
         if user_input == "1":
+            # Create new game
             values = prompt_game_details_input()
             database.create_game(values)
         elif user_input == "2":
