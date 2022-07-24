@@ -77,7 +77,7 @@ class Database:
         self._records = []
 
         try:
-            file = open(f"{file_name}.json", "r")
+            file = open(f"{file_name}.json", "r", encoding="utf-8")
         except IOError as error:
             print(error.strerror)
             return
@@ -99,7 +99,7 @@ class Database:
         """
         Saves records to json file
         """
-        file = open(f"{file_name}.json", "x")
+        file = open(f"{file_name}.json", "x", encoding="utf-8")
         for record in self._records:
             file.write(
                 # Code from user12642493 on StackOverflow to
