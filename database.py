@@ -87,7 +87,8 @@ class Database:
                 json_dict = json.loads(record)
                 game = Game(json_dict.title, json_dict.genre, json_dict.publisher,
                             json_dict.developer, json_dict.platform,
-                            datetime(json_dict.release_date), datetime(json_dict.purchase_date))
+                            datetime.fromisoformat(json_dict.release_date),
+                            datetime.fromisoformat(json_dict.purchase_date))
                 self._records.append(game)
         except Exception:
             print("Data not in correct format. Please check the file you are trying to load.")
