@@ -25,6 +25,14 @@ These will include:
 - Release Date (eg. 22/10/2010)
 - Purchase Date (eg. 03/06/2022)
 
+# Testing
+
+## Bugs
+
+- When implementing input validation for creating a new game, an error would be thrown when one of the initially entered values was invalid, even if the final inputs were valid.
+    - This was because the list the values were being appended to had been declared outside the while loop, meaning the previous values were still in the list.
+    - That list was then being passed to the database to create a new game, which included more values than expected, causing the error.
+
 # Credits
 
 - Code to serialize objects with datetime attributes from user12642493 on StackOverflow
