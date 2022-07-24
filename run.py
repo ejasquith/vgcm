@@ -72,7 +72,7 @@ def prompt_game_details_input():
 
     while not valid:
         values = []
-        print("Enter game details:")
+        print("\nEnter game details:")
         try:
             values.append(check_valid_string(input("Title: ")))
             values.append(check_valid_string(input("Genre: ")))
@@ -84,7 +84,7 @@ def prompt_game_details_input():
 
             valid = True
         except ValueError as verr:
-            print(f"Invalid input: {verr}")
+            print(f"\nInvalid input: {verr}")
             print("Please try again.")
 
     return values
