@@ -40,9 +40,7 @@ def prompt_string_input(prompt, allow_empty):
     valid = False
     while not valid:
         user_input = input(prompt)
-        if user_input:
-            valid = True
-        elif allow_empty:
+        if user_input or allow_empty:
             valid = True
         else:
             print("String must not be empty. Please try again.")
@@ -60,7 +58,7 @@ def prompt_date_input(prompt, allow_empty):
             date = datetime.strptime(input(prompt), "%d/%m/%Y")
         except ValueError:
             if allow_empty:
-                valid = True
+                return ""
             else:
                 print("Date in invalid format. Should be in format DD/MM/YYYY")
                 print("Please try again.")
@@ -107,8 +105,10 @@ def main():
             print("\n"+format_table_output(database.get_all_games()))
         elif user_input == "3":
             # Search games
-            print("Enter game title:")
-            games = database.find_game(title=input("> "))
+            print("Enter details or leave blank to skip field")
+            values = prompt_game_details_input(True)
+            title, genre, publisher, developer, platform, release_date, purchase_date = values
+            games = database.find_game(title=title, genre=genre, publisher=publisher, developer=developer, platform=platform, release_date=release_date, purchase_date=purchase_date)
             print("\n"+format_table_output(games))
         elif user_input == "4":
             # Remove game
