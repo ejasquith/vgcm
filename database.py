@@ -6,6 +6,7 @@ Classes:
 """
 
 from game import Game
+import copy
 
 
 class Database:
@@ -60,7 +61,14 @@ class Database:
             developer : str
             platform : str
         """
-        pass
+        searched_list = copy.deepcopy(self._records)
+        for key in kwargs:
+            searched_list = [record for record in searched_list if getattr(record, key) == kwargs[key]]
+        return searched_list
+        #     # reduce list by key
+        #     for record in searched_list:
+        #         if getattr(record, key) != kwargs[key]:
+
 
     def get_all_games(self):
         """

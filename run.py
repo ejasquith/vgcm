@@ -102,7 +102,9 @@ def main():
             print("\n"+format_table_output(database.get_all_games()))
         elif user_input == "3":
             # Search games
-            pass
+            print("Enter game title:")
+            games = database.find_game(title=input("> "))
+            print("\n"+format_table_output(games))
         elif user_input == "4":
             # Remove game
             pass
