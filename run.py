@@ -32,35 +32,36 @@ def format_table_output(games):
                              "Platform", "Release Date", "Purchase Date"])
 
 
-def check_valid_date(string):
+def prompt_string_input(prompt):
     """
-    Checks if a string is a valid date in format DD/MM/YYYY.
-    Raises ValueError if invalid
-    Returns datetime object from original string
+    Prompts user to enter a non-empty string
+    Returns valid input
     """
-    try:
-        date = datetime.strptime(string, "%d/%m/%Y")
-    except ValueError as verr:
-        # Raises an exception with custom message
-        # from keyword indicates direct cause
-        raise ValueError(
-            "Date in invalid format. Should be in format DD/MM/YYYY"
-        ) from verr
-    else:
-        return date
+    valid = False
+    while not valid:
+        user_input = input(prompt)
+        if user_input:
+            valid = True
+        else:
+            print("String must not be empty. Please try again.")
+    return user_input
 
 
-def check_valid_string(string):
+def prompt_date_input(prompt):
     """
-    Checks if a string is empty
-    Raises ValueError if empty
-    Returns original string
+    Prompts user to enter a date
+    Returns datetime object from valid input
     """
-    # Empty strings are falsy
-    if not string:
-        raise ValueError("String cannot be empty.")
-    else:
-        return string
+    valid = False
+    while not valid:
+        try:
+            date = datetime.strptime(input(prompt), "%d/%m/%Y")
+        except ValueError:
+            print("Date in invalid format. Should be in format DD/MM/YYYY")
+            print("Please try again.")
+        else:
+            valid = True
+    return date
 
 
 def prompt_game_details_input():
@@ -68,24 +69,16 @@ def prompt_game_details_input():
     Prompts user to enter details for new Game object
     Returns list of inputted values
     """
-    valid = False
+    values = []
 
-    while not valid:
-        values = []
-        print("\nEnter game details:")
-        try:
-            values.append(check_valid_string(input("Title: ")))
-            values.append(check_valid_string(input("Genre: ")))
-            values.append(check_valid_string(input("Publisher: ")))
-            values.append(check_valid_string(input("Developer: ")))
-            values.append(check_valid_string(input("Platform: ")))
-            values.append(check_valid_date(input("Release date: ")))
-            values.append(check_valid_date(input("Purchase date: ")))
-
-            valid = True
-        except ValueError as verr:
-            print(f"\nInvalid input: {verr}")
-            print("Please try again.")
+    print("\nEnter game details:")
+    values.append(prompt_string_input("Title: "))
+    values.append(prompt_string_input("Genre: "))
+    values.append(prompt_string_input("Publisher: "))
+    values.append(prompt_string_input("Developer: "))
+    values.append(prompt_string_input("Platform: "))
+    values.append(prompt_date_input("Release date: "))
+    values.append(prompt_date_input("Purchase date: "))
 
     return values
 
