@@ -5,8 +5,6 @@ Classes:
     Database
 """
 
-import json
-from datetime import datetime
 from game import Game
 
 
@@ -74,39 +72,10 @@ class Database:
         """
         Loads _records attribute from json file
         """
-        self._records = []
-
-        try:
-            file = open(f"{file_name}.json", "r", encoding="utf-8")
-        except IOError as error:
-            print(error.strerror)
-            return
-
-        try:
-            for record in file:
-                json_dict = json.loads(record)
-                game = Game(json_dict.title, json_dict.genre, json_dict.publisher,
-                            json_dict.developer, json_dict.platform,
-                            datetime.fromisoformat(json_dict.release_date),
-                            datetime.fromisoformat(json_dict.purchase_date))
-                self._records.append(game)
-        except Exception:
-            print("Data not in correct format. Please check the file you are trying to load.")
-        finally:
-            file.close()
+        pass
 
     def save_file(self, file_name):
         """
         Saves records to json file
         """
-        file = open(f"{file_name}.json", "x", encoding="utf-8")
-        for record in self._records:
-            file.write(
-                # Code from user12642493 on StackOverflow to
-                # serialize object with datetime attribute
-                # https://stackoverflow.com/questions/3768895/how-to-make-a-class-json-serializable
-                json.dumps(record, default=lambda o:
-                           o.isoformat() if (isinstance(o, datetime)) else o.__dict__,
-                           sort_keys=True, indent=4)
-            )
-        file.close()
+        pass
