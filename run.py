@@ -117,21 +117,24 @@ def main():
             title, genre, publisher, developer, platform, release_date, purchase_date = values
             games = database.find_game(title=title, genre=genre, publisher=publisher, developer=developer, platform=platform, release_date=release_date, purchase_date=purchase_date)
             
-            print("\n"+format_table_output(games))
-            print("Are you sure you want to delete these games? (y/n)")
-            while (choice := input("> ").lower()) not in ("n", "no"):
-                if choice in ("y", "yes"):
-                    try:
-                        database.delete_game(title, genre, publisher, developer,
-                                             platform, release_date, purchase_date)
-                    except Exception as exc:
-                        print("Error: ", exc.args)
+            if games:
+                print("\n"+format_table_output(games))
+                print("Are you sure you want to delete these games? (y/n)")
+                while (choice := input("> ").lower()) not in ("n", "no"):
+                    if choice in ("y", "yes"):
+                        try:
+                            database.delete_game(title, genre, publisher, developer,
+                                                platform, release_date, purchase_date)
+                        except Exception as exc:
+                            print("Error: ", exc.args)
+                        else:
+                            print("Games successfully deleted.")
+                        finally:
+                            break
                     else:
-                        print("Games successfully deleted.")
-                    finally:
-                        break
-                else:
-                    print("Please enter y or n.")
+                        print("Please enter y or n.")
+            else:
+                print("\nNo games found.")
 
         else:
             # Invalid input
