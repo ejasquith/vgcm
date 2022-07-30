@@ -128,6 +128,8 @@ def main():
                         print("Error: ", exc.args)
                     else:
                         print("Games successfully deleted.")
+                    finally:
+                        break
                 else:
                     print("Please enter y or n.")
 
