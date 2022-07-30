@@ -70,18 +70,18 @@ def prompt_date_input(prompt, allow_empty):
 def prompt_game_details_input(allow_empty):
     """
     Prompts user to enter details for new Game object
-    Returns list of inputted values
+    Returns dict of inputted values
     """
-    values = []
+    values = {}
 
     print("\nEnter game details:")
-    values.append(prompt_string_input("Title: ", allow_empty))
-    values.append(prompt_string_input("Genre: ", allow_empty))
-    values.append(prompt_string_input("Publisher: ", allow_empty))
-    values.append(prompt_string_input("Developer: ", allow_empty))
-    values.append(prompt_string_input("Platform: ", allow_empty))
-    values.append(prompt_date_input("Release date: ", allow_empty))
-    values.append(prompt_date_input("Purchase date: ", allow_empty))
+    values["title"] = prompt_string_input("Title: ", allow_empty)
+    values["genre"] = prompt_string_input("Genre: ", allow_empty)
+    values["publisher"] = prompt_string_input("Publisher: ", allow_empty)
+    values["developer"] = prompt_string_input("Developer: ", allow_empty)
+    values["platform"] = prompt_string_input("Platform: ", allow_empty)
+    values["release_date"] = prompt_date_input("Release date: ", allow_empty)
+    values["purchase_date"] = prompt_date_input("Purchase date: ", allow_empty)
 
     return values
 
@@ -99,7 +99,7 @@ def main():
         if user_input == "1":
             # Create new game
             values = prompt_game_details_input(False)
-            database.create_game(values)
+            database.create_game(**values)
         elif user_input == "2":
             # Display games
             print("\n"+format_table_output(database.get_all_games()))
@@ -107,15 +107,13 @@ def main():
             # Search games
             print("Enter details or leave blank to skip field")
             values = prompt_game_details_input(True)
-            title, genre, publisher, developer, platform, release_date, purchase_date = values
-            games = database.find_game(title=title, genre=genre, publisher=publisher, developer=developer, platform=platform, release_date=release_date, purchase_date=purchase_date)
+            games = database.find_game(**values)
             print("\n"+format_table_output(games))
         elif user_input == "4":
             # Remove game
             print("Enter details of game(s) to delete, or leave blank to skip field")
             values = prompt_game_details_input(True)
-            title, genre, publisher, developer, platform, release_date, purchase_date = values
-            games = database.find_game(title=title, genre=genre, publisher=publisher, developer=developer, platform=platform, release_date=release_date, purchase_date=purchase_date)
+            games = database.find_game(**values)
             
             if games:
                 print("\n"+format_table_output(games))
@@ -123,8 +121,7 @@ def main():
                 while (choice := input("> ").lower()) not in ("n", "no"):
                     if choice in ("y", "yes"):
                         try:
-                            database.delete_game(title, genre, publisher, developer,
-                                                platform, release_date, purchase_date)
+                            database.delete_game(**values)
                         except Exception as exc:
                             print("Error: ", exc.args)
                         else:

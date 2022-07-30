@@ -31,23 +31,22 @@ class Database:
         else:
             self._records = []
 
-    def create_game(self, attr_list):
+    def create_game(self, **kwargs):
         """
         Creates game object with given parameters and inserts into database
         """
-        title, genre, publisher, developer, platform, release_date, purchase_date = attr_list
         self._records.append(
-            Game(title, genre, publisher, developer,
-                 platform, release_date, purchase_date)
+            Game(kwargs["title"], kwargs["genre"], kwargs["publisher"],
+                 kwargs["developer"], kwargs["platform"],
+                 kwargs["release_date"], kwargs["purchase_date"])
         )
 
-    def delete_game(self, title, genre, publisher, developer,
-                    platform, release_date, purchase_date):
+    def delete_game(self, **kwargs):
         """
         Finds and deletes games with given parameters.
         If no game exists, returns None
         """
-        games = self.find_game(title=title, genre=genre, publisher=publisher, developer=developer, platform=platform, release_date=release_date, purchase_date=purchase_date)
+        games = self.find_game(**kwargs)
         self._records = [game for game in self._records if game in games]
 
     def find_game(self, **kwargs):
