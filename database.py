@@ -62,9 +62,8 @@ class Database:
             platform : str
         """
         searched_list = copy(self._records)
-        for key in kwargs:
-            if kwargs[key]:
-                searched_list = [record for record in searched_list if getattr(record, key) == kwargs[key]]
+        for key, value in kwargs.items():
+            searched_list = [record for record in searched_list if getattr(record, key) == value]
         return searched_list
 
     def get_all_games(self):

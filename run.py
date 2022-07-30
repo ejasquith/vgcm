@@ -107,12 +107,16 @@ def main():
             # Search games
             print("Enter details or leave blank to skip field")
             values = prompt_game_details_input(True)
+            # Remove entries with empty values
+            values = {key: value for key, value in values.items() if value}
             games = database.find_game(**values)
             print("\n"+format_table_output(games))
         elif user_input == "4":
             # Remove game
             print("Enter details of game(s) to delete, or leave blank to skip field")
             values = prompt_game_details_input(True)
+            # Remove entries with empty values
+            values = {key: value for key, value in values.items() if value}
             games = database.find_game(**values)
             
             if games:
