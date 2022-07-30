@@ -5,7 +5,7 @@ Classes:
     Database
 """
 
-import copy
+from copy import copy
 from game import Game
 
 
@@ -61,7 +61,7 @@ class Database:
             developer : str
             platform : str
         """
-        searched_list = copy.copy(self._records)
+        searched_list = copy(self._records)
         for key in kwargs:
             if kwargs[key]:
                 searched_list = [record for record in searched_list if getattr(record, key) == kwargs[key]]
