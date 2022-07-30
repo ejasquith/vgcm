@@ -5,8 +5,8 @@ Classes:
     Database
 """
 
-from game import Game
 import copy
+from game import Game
 
 
 class Database:
@@ -47,7 +47,7 @@ class Database:
         If no game exists, returns None
         """
         games = self.find_game(**kwargs)
-        self._records = [game for game in self._records if game in games]
+        self._records = [game for game in self._records if game not in games]
 
     def find_game(self, **kwargs):
         """
@@ -61,7 +61,7 @@ class Database:
             developer : str
             platform : str
         """
-        searched_list = copy.deepcopy(self._records)
+        searched_list = copy.copy(self._records)
         for key in kwargs:
             if kwargs[key]:
                 searched_list = [record for record in searched_list if getattr(record, key) == kwargs[key]]
