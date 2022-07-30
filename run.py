@@ -112,7 +112,25 @@ def main():
             print("\n"+format_table_output(games))
         elif user_input == "4":
             # Remove game
-            pass
+            print("Enter details of game(s) to delete, or leave blank to skip field")
+            values = prompt_game_details_input(True)
+            title, genre, publisher, developer, platform, release_date, purchase_date = values
+            games = database.find_game(title=title, genre=genre, publisher=publisher, developer=developer, platform=platform, release_date=release_date, purchase_date=purchase_date)
+            
+            print("\n"+format_table_output(games))
+            print("Are you sure you want to delete these games? (y/n)")
+            while (choice := input("> ").lower()) not in ("n", "no"):
+                if choice in ("y", "yes"):
+                    try:
+                        database.delete_game(title, genre, publisher, developer,
+                                             platform, release_date, purchase_date)
+                    except Exception as exc:
+                        print("Error: ", exc.args)
+                    else:
+                        print("Games successfully deleted.")
+                else:
+                    print("Please enter y or n.")
+
         else:
             # Invalid input
             print("Invalid input. Please enter a number 1-5")
