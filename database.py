@@ -44,10 +44,11 @@ class Database:
     def delete_game(self, title, genre, publisher, developer,
                     platform, release_date, purchase_date):
         """
-        Finds and deletes game with given parameters.
+        Finds and deletes games with given parameters.
         If no game exists, returns None
         """
-        pass
+        games = self.find_game(title=title, genre=genre, publisher=publisher, developer=developer, platform=platform, release_date=release_date, purchase_date=purchase_date)
+        self._records = [game for game in self._records if game in games]
 
     def find_game(self, **kwargs):
         """
