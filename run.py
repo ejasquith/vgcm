@@ -135,14 +135,9 @@ def main():
                 print("\nAre you sure you want to delete these games? (y/n)")
                 while (choice := input("> ").lower()) not in ("n", "no"):
                     if choice in ("y", "yes"):
-                        try:
-                            database.delete_games(**values)
-                        except Exception as exc:
-                            print("Error: ", exc.args)
-                        else:
-                            print("Games successfully deleted.")
-                        finally:
-                            break
+                        database.delete_games(**values)
+                        print("Games successfully deleted.")
+                        break
                     else:
                         print("Please enter y or n.")
             else:
