@@ -1,1 +1,1 @@
-# Your requirements go here
+tabulate==0.8.10
