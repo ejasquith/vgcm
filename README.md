@@ -25,6 +25,8 @@ These will include:
 - Release Date (eg. 22/10/2010)
 - Purchase Date (eg. 03/06/2022)
 
+During development, the developer and purchase date attributes had to be scrapped due to the 80 character width of the virtual terminal the project would be hosted on. This was to ensure all data is correctly presented to the user.
+
 # Testing
 
 ## Bugs
