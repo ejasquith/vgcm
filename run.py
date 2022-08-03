@@ -109,7 +109,7 @@ def main():
             values = prompt_game_details_input(True)
             # Remove entries with empty values
             values = {key: value for key, value in values.items() if value}
-            games = database.find_game(**values)
+            games = database.find_games(**values)
             print("\n"+format_table_output(games))
         elif user_input == "4":
             # Remove game
@@ -118,7 +118,7 @@ def main():
             values = prompt_game_details_input(True)
             # Remove entries with empty values
             values = {key: value for key, value in values.items() if value}
-            games = database.find_game(**values)
+            games = database.find_games(**values)
 
             if games:
                 print("\n"+format_table_output(games))
@@ -126,7 +126,7 @@ def main():
                 while (choice := input("> ").lower()) not in ("n", "no"):
                     if choice in ("y", "yes"):
                         try:
-                            database.delete_game(**values)
+                            database.delete_games(**values)
                         except Exception as exc:
                             print("Error: ", exc.args)
                         else:

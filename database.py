@@ -41,15 +41,15 @@ class Database:
                  kwargs["release_date"], kwargs["purchase_date"])
         )
 
-    def delete_game(self, **kwargs):
+    def delete_games(self, **kwargs):
         """
         Finds and deletes games with given parameters.
         If no game exists, returns None
         """
-        games = self.find_game(**kwargs)
+        games = self.find_games(**kwargs)
         self._records = [game for game in self._records if game not in games]
 
-    def find_game(self, **kwargs):
+    def find_games(self, **kwargs):
         """
         Returns game objects that match given parameters.
         Parameters are optional but at least one must be given
