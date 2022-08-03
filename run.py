@@ -153,4 +153,5 @@ def main():
             print("Invalid input. Please enter a number 1-5")
 
 
-main()
+if __name__ == "__main__":
+    main()
