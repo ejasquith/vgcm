@@ -98,6 +98,7 @@ def main():
             # Create new game
             values = prompt_game_details_input(False)
             database.create_game(**values)
+            print(f"\n{values['title']} successfully saved.")
         elif user_input == "2":
             # Display games
             print("\n"+format_table_output(database.get_all_games()))
@@ -120,7 +121,7 @@ def main():
 
             if games:
                 print("\n"+format_table_output(games))
-                print("Are you sure you want to delete these games? (y/n)")
+                print("\nAre you sure you want to delete these games? (y/n)")
                 while (choice := input("> ").lower()) not in ("n", "no"):
                     if choice in ("y", "yes"):
                         try:
