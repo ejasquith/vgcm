@@ -1,3 +1,14 @@
+"""
+Main program file.
+
+Methods:
+    format_table_output
+    prompt_string_input
+    prompt_date_input
+    prompt_game_details_input
+    main
+"""
+
 from datetime import datetime
 from tabulate import tabulate
 from database import Database
