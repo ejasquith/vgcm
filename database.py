@@ -37,8 +37,7 @@ class Database:
         """
         self._records.append(
             Game(kwargs["title"], kwargs["genre"], kwargs["publisher"],
-                 kwargs["developer"], kwargs["platform"],
-                 kwargs["release_date"], kwargs["purchase_date"])
+                 kwargs["platform"], kwargs["release_date"])
         )
 
     def delete_games(self, **kwargs):

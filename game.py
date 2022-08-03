@@ -21,30 +21,22 @@ class Game:
         genre of the game
     publisher : string
         publisher of the game
-    developer : string
-        developer of the game
     platform : string
         platform the game was released to
     release_date : datetime
-        Date of the game's release
-    purchase_date : datetime
-        Date the game was purchased        
+        Date of the game's release     
     """
-    def __init__(self, title, genre, publisher, developer,
-                 platform, release_date, purchase_date):
+    def __init__(self, title, genre, publisher,
+                 platform, release_date, ):
         self.title = title
         self.genre = genre
         self.publisher = publisher
-        self.developer = developer
         self.platform = platform
         self.release_date = release_date
-        self.purchase_date = purchase_date
 
     def listify(self):
         """
         Returns the object's properties as a list.
         """
-        return [self.title, self.genre, self.publisher,
-                self.developer, self.platform,
-                self.release_date.strftime("%d/%m/%Y"),
-                self.purchase_date.strftime("%d/%m/%Y")]
+        return [self.title, self.genre, self.publisher, self.platform,
+                self.release_date.strftime("%d/%m/%Y")]

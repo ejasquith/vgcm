@@ -28,8 +28,8 @@ def format_table_output(games):
     """
     games_properties = [game.listify() for game in games]
     return tabulate(games_properties,
-                    headers=["Title", "Genre", "Publisher", "Developer",
-                             "Platform", "Release Date", "Purchase Date"])
+                    headers=["Title", "Genre", "Publisher",
+                             "Platform", "Release Date"])
 
 
 def prompt_string_input(prompt, allow_empty):
@@ -78,10 +78,8 @@ def prompt_game_details_input(allow_empty):
     values["title"] = prompt_string_input("Title: ", allow_empty)
     values["genre"] = prompt_string_input("Genre: ", allow_empty)
     values["publisher"] = prompt_string_input("Publisher: ", allow_empty)
-    values["developer"] = prompt_string_input("Developer: ", allow_empty)
     values["platform"] = prompt_string_input("Platform: ", allow_empty)
     values["release_date"] = prompt_date_input("Release date: ", allow_empty)
-    values["purchase_date"] = prompt_date_input("Purchase date: ", allow_empty)
 
     return values
 
