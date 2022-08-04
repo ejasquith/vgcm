@@ -26,7 +26,8 @@ class SheetConnection():
 
     def get_instance(self):
         """
-        Returns a single instance of SheetConnection
+        Returns the running instance of SheetConnection,
+        or creates a new one if none exists
         """
         if SheetConnection.instance is None:
             SheetConnection.instance = SheetConnection()
