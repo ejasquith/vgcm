@@ -5,6 +5,7 @@ Classes:
     Database
 """
 
+from datetime import datetime
 from copy import copy
 from game import Game
 from sheetconnection import SheetConnection
@@ -74,4 +75,12 @@ class Database:
         """
         Loads _records attribute from Google Sheet
         """
-        pass
+        records = SheetConnection.get_instance().get_all_records()
+        for record in records:
+            title = record[0]
+            genre = record[1]
+            publisher = record[2]
+            platform = record[3]
+            release_date = datetime.strptime(record[4], "%d/%m/%Y")
+            self._records.append(Game(title, genre, publisher,
+                                      platform, release_date))
