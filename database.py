@@ -46,6 +46,7 @@ class Database:
         """
         games = self.find_games(**kwargs)
         self._records = [game for game in self._records if game not in games]
+        SheetConnection.get_instance().overwrite_records(self._records)
 
     def find_games(self, **kwargs):
         """

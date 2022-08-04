@@ -56,4 +56,3 @@ class SheetConnection():
         self._SHEET.worksheet("games").clear()
         for record in records:
             self.insert_record(record)
-
