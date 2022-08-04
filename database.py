@@ -34,10 +34,10 @@ class Database:
         """
         Creates game object with given parameters and inserts into database
         """
-        self._records.append(
-            Game(kwargs["title"], kwargs["genre"], kwargs["publisher"],
-                 kwargs["platform"], kwargs["release_date"])
-        )
+        game = Game(kwargs["title"], kwargs["genre"], kwargs["publisher"],
+                    kwargs["platform"], kwargs["release_date"])
+        self._records.append(game)
+        SheetConnection.get_instance().insert_record(game)
 
     def delete_games(self, **kwargs):
         """
