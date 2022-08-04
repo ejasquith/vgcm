@@ -48,3 +48,12 @@ class SheetConnection():
         Returns all records as a list of lists
         """
         return self._SHEET.worksheet("games").get_all_values()
+
+    def overwrite_records(self, records):
+        """
+        Overwrites sheet with a list of games
+        """
+        self._SHEET.worksheet("games").clear()
+        for record in records:
+            self.insert_record(record)
+
