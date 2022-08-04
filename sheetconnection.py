@@ -1,6 +1,7 @@
 import gspread
 from google.oauth2.service_account import Credentials
 
+
 class SheetConnection():
     """
     Class used to handle connection to Google Sheet API
@@ -32,3 +33,17 @@ class SheetConnection():
         if SheetConnection.instance is None:
             SheetConnection.instance = SheetConnection()
         return SheetConnection.instance
+
+    def insert_record(self, game):
+        """
+        Inserts a game object into Google Sheet
+        """
+        values = game.listify()
+        games_sheet = self._SHEET.worksheet("games")
+        games_sheet.append_row(values)
+
+    def get_all_records(self):
+        """
+        Returns all records as a list of lists
+        """
+        return self._SHEET.worksheet("games").get_all_values()
