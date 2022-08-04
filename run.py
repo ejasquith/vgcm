@@ -110,9 +110,11 @@ def main():
             values = prompt_game_details_input(False)
             database.create_game(**values)
             print(f"\n{values['title']} successfully saved.")
+
         elif user_input == "2":
             # Display games
             print("\n"+format_table_output(database.get_all_games()))
+
         elif user_input == "3":
             # Search games
             print("Enter details or leave blank to skip field")
@@ -121,6 +123,7 @@ def main():
             values = {key: value for key, value in values.items() if value}
             games = database.find_games(**values)
             print("\n"+format_table_output(games))
+
         elif user_input == "4":
             # Remove game
             print("Enter details of game(s) to delete,",

@@ -8,3 +8,4 @@ node_modules/
 .github/
 index.js.json
 package-lock.json
+creds.json
