@@ -38,9 +38,10 @@ def format_table_output(games):
     Formats a list of games into a table
     """
     games_properties = [game.listify() for game in games]
-    return tabulate(games_properties,
-                    headers=["Title", "Genre", "Publisher",
-                             "Platform", "Release Date"])
+    return tabulate(
+        games_properties,
+        headers=["Title", "Genre", "Publisher", "Platform", "Release Date"],
+    )
 
 
 def prompt_string_input(prompt, allow_empty):
@@ -113,7 +114,7 @@ def main():
 
         elif user_input == "2":
             # Display games
-            print("\n"+format_table_output(database.get_all_games()))
+            print("\n" + format_table_output(database.get_all_games()))
 
         elif user_input == "3":
             # Search games
@@ -122,7 +123,7 @@ def main():
             # Remove entries with empty values
             values = {key: value for key, value in values.items() if value}
             games = database.find_games(**values)
-            print("\n"+format_table_output(games))
+            print("\n" + format_table_output(games))
 
         elif user_input == "4":
             # Remove game
@@ -134,7 +135,7 @@ def main():
             games = database.find_games(**values)
 
             if games:
-                print("\n"+format_table_output(games))
+                print("\n" + format_table_output(games))
                 print("\nAre you sure you want to delete these games? (y/n)")
                 while (choice := input("> ").lower()) not in ("n", "no"):
                     if choice in ("y", "yes"):

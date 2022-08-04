@@ -6,7 +6,6 @@ Classes:
 """
 
 from datetime import datetime
-from copy import copy
 from game import Game
 from sheetconnection import SheetConnection
 
@@ -34,8 +33,13 @@ class Database:
         """
         Creates game object with given parameters and inserts into database
         """
-        game = Game(kwargs["title"], kwargs["genre"], kwargs["publisher"],
-                    kwargs["platform"], kwargs["release_date"])
+        game = Game(
+            kwargs["title"],
+            kwargs["genre"],
+            kwargs["publisher"],
+            kwargs["platform"],
+            kwargs["release_date"],
+        )
         self._records.append(game)
         SheetConnection.get_instance().insert_record(game)
 
@@ -60,10 +64,12 @@ class Database:
             developer : str
             platform : str
         """
-        searched_list = copy(self._records)
-        for key, value in kwargs.items():
-            searched_list = [record for record in searched_list
-                             if getattr(record, key) == value]
+        searched_list = [
+            record
+            for key, value in kwargs.items()
+            for record in self._records
+            if getattr(record, key) == value
+        ]
         return searched_list
 
     def get_all_games(self):
