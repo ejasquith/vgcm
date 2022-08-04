@@ -25,7 +25,8 @@ class SheetConnection():
 
         self._SHEET = self._GSPREAD_CLIENT.open("vgcm_data")
 
-    def get_instance(self):
+    @staticmethod
+    def get_instance():
         """
         Returns the running instance of SheetConnection,
         or creates a new one if none exists
