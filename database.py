@@ -7,6 +7,7 @@ Classes:
 
 from copy import copy
 from game import Game
+from sheetconnection import SheetConnection
 
 
 class Database:
@@ -20,16 +21,13 @@ class Database:
         delete_game
         find_game
         get_all_games
-        load_file
-        save_file
+        load_sheet
     """
 
-    def __init__(self, file=None):
-        if file is not None:
-            # Parse file and load
-            self.load_file(file)
-        else:
-            self._records = []
+    def __init__(self):
+        self._records = []
+        # Parse file and load
+        self.load_sheet()
 
     def create_game(self, **kwargs):
         """
@@ -72,14 +70,8 @@ class Database:
         """
         return self._records
 
-    def load_file(self, file_name):
+    def load_sheet(self):
         """
-        Loads _records attribute from json file
-        """
-        pass
-
-    def save_file(self, file_name):
-        """
-        Saves records to json file
+        Loads _records attribute from Google Sheet
         """
         pass
