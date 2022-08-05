@@ -106,14 +106,16 @@ def main():
     print(LOGO)
     print(WELCOME_MESSAGE)
 
+    print("\nLoading database...")
     database = Database()
 
     while (user_input := input(MENU)) != "5":
         if user_input == "1":
             # Create new game
             values = prompt_game_details_input(False)
+            print("\nSaving game...")
             database.create_game(**values)
-            print(f"\n{values['title']} successfully saved.")
+            print(f"{values['title']} successfully saved.")
 
         elif user_input == "2":
             # Display games
@@ -145,6 +147,7 @@ def main():
                 print("\nAre you sure you want to delete these games? (y/n)")
                 while (choice := input("> ").lower()) not in ("n", "no"):
                     if choice in ("y", "yes"):
+                        print("Deleting games...")
                         database.delete_games(**values)
                         print("Games successfully deleted.")
                         break
