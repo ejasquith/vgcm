@@ -68,7 +68,8 @@ class Database:
             record
             for key, value in kwargs.items()
             for record in self._records
-            if getattr(record, key) == value
+            # str() allows datetimes to be compared
+            if str(value) in str(getattr(record, key))
         ]
         return searched_list
 
