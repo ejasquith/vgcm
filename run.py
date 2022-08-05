@@ -41,7 +41,7 @@ def format_table_output(games):
     return tabulate(
         games_properties,
         headers=["Title", "Genre", "Publisher", "Platform", "Release Date"],
-        maxcolwidths=[14, 14, 14, 14, 14],
+        maxcolwidths=14,
         tablefmt="grid"
     )
 
@@ -68,10 +68,11 @@ def prompt_date_input(prompt, allow_empty):
     """
     valid = False
     while not valid:
+        user_input = input(prompt)
         try:
-            date = datetime.strptime(input(prompt), "%d/%m/%Y")
+            date = datetime.strptime(user_input, "%d/%m/%Y")
         except ValueError:
-            if allow_empty:
+            if not user_input and allow_empty:
                 return ""
             else:
                 print("Date in invalid format. Should be in format DD/MM/YYYY")
