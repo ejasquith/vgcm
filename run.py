@@ -125,7 +125,10 @@ def main():
             # Remove entries with empty values
             values = {key: value for key, value in values.items() if value}
             games = database.find_games(**values)
-            print("\n" + format_table_output(games))
+            if games:
+                print("\n" + format_table_output(games))
+            else:
+                print("\nNo games found.")
 
         elif user_input == "4":
             # Remove game
