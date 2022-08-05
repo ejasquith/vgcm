@@ -32,6 +32,14 @@ MENU = """
 5) Exit
 > """
 
+SORT_MENU = """
+Choose attribute to sort list by, or leave empty to keep default order:
+1) Title
+2) Genre
+3) Publisher
+4) Platform
+5) Release date"""
+
 
 def format_table_output(games):
     """
@@ -82,6 +90,22 @@ def prompt_date_input(prompt, allow_empty):
     return date
 
 
+def prompt_sort_attribute():
+    """
+    Prompts user to enter attribute to sort list of games by
+    """
+    valid = False
+    while not valid:
+        print(SORT_MENU)
+        user_input = input("> ")
+        if not user_input:
+            return None
+        elif user_input in ["1", "2", "3", "4", "5"]:
+            return int(user_input)
+        else:
+            print("Invalid input. Please enter 1-5 or leave blank.")
+
+
 def prompt_game_details_input(allow_empty):
     """
     Prompts user to enter details for new Game object
@@ -119,7 +143,19 @@ def main():
 
         elif user_input == "2":
             # Display games
-            print("\n" + format_table_output(database.get_all_games()))
+            games = database.get_all_games()
+            sort_attr = prompt_sort_attribute()
+            if sort_attr == 1:
+                games.sort(key=lambda game: game.title)
+            elif sort_attr == 2:
+                games.sort(key=lambda game: game.genre)
+            elif sort_attr == 3:
+                games.sort(key=lambda game: game.publisher)
+            elif sort_attr == 4:
+                games.sort(key=lambda game: game.platform)
+            elif sort_attr == 5:
+                games.sort(key=lambda game: game.release_date)
+            print("\n" + format_table_output(games))
 
         elif user_input == "3":
             # Search games
@@ -129,6 +165,17 @@ def main():
             values = {key: value for key, value in values.items() if value}
             games = database.find_games(**values)
             if games:
+                sort_attr = prompt_sort_attribute()
+                if sort_attr == 1:
+                    games.sort(key=lambda game: game.title)
+                elif sort_attr == 2:
+                    games.sort(key=lambda game: game.genre)
+                elif sort_attr == 3:
+                    games.sort(key=lambda game: game.publisher)
+                elif sort_attr == 4:
+                    games.sort(key=lambda game: game.platform)
+                elif sort_attr == 5:
+                    games.sort(key=lambda game: game.release_date)
                 print("\n" + format_table_output(games))
             else:
                 print("\nNo games found.")
@@ -147,7 +194,7 @@ def main():
                 print("\nAre you sure you want to delete these games? (y/n)")
                 while (choice := input("> ").lower()) not in ("n", "no"):
                     if choice in ("y", "yes"):
-                        print("Deleting games...")
+                        print("\nDeleting games...")
                         database.delete_games(**values)
                         print("Games successfully deleted.")
                         break
