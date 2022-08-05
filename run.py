@@ -106,6 +106,24 @@ def prompt_sort_attribute():
             print("Invalid input. Please enter 1-5 or leave blank.")
 
 
+def sort_games(games, sort_attr):
+    """
+    Sorts a list of games based on user input from prompt_sort_attribute
+    """
+    if sort_attr == 1:
+        games.sort(key=lambda game: game.title)
+    elif sort_attr == 2:
+        games.sort(key=lambda game: game.genre)
+    elif sort_attr == 3:
+        games.sort(key=lambda game: game.publisher)
+    elif sort_attr == 4:
+        games.sort(key=lambda game: game.platform)
+    elif sort_attr == 5:
+        games.sort(key=lambda game: game.release_date)
+
+    return games
+
+
 def prompt_game_details_input(allow_empty):
     """
     Prompts user to enter details for new Game object
@@ -145,16 +163,7 @@ def main():
             # Display games
             games = database.get_all_games()
             sort_attr = prompt_sort_attribute()
-            if sort_attr == 1:
-                games.sort(key=lambda game: game.title)
-            elif sort_attr == 2:
-                games.sort(key=lambda game: game.genre)
-            elif sort_attr == 3:
-                games.sort(key=lambda game: game.publisher)
-            elif sort_attr == 4:
-                games.sort(key=lambda game: game.platform)
-            elif sort_attr == 5:
-                games.sort(key=lambda game: game.release_date)
+            sort_games(games, sort_attr)
             print("\n" + format_table_output(games))
 
         elif user_input == "3":
@@ -166,16 +175,7 @@ def main():
             games = database.find_games(**values)
             if games:
                 sort_attr = prompt_sort_attribute()
-                if sort_attr == 1:
-                    games.sort(key=lambda game: game.title)
-                elif sort_attr == 2:
-                    games.sort(key=lambda game: game.genre)
-                elif sort_attr == 3:
-                    games.sort(key=lambda game: game.publisher)
-                elif sort_attr == 4:
-                    games.sort(key=lambda game: game.platform)
-                elif sort_attr == 5:
-                    games.sort(key=lambda game: game.release_date)
+                sort_games(games, sort_attr)
                 print("\n" + format_table_output(games))
             else:
                 print("\nNo games found.")
