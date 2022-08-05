@@ -41,7 +41,8 @@ def format_table_output(games):
     return tabulate(
         games_properties,
         headers=["Title", "Genre", "Publisher", "Platform", "Release Date"],
-        maxcolwidths=[15, 15, 15, 15, 15]
+        maxcolwidths=[14, 14, 14, 14, 14],
+        tablefmt="grid"
     )
 
 
