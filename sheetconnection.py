@@ -6,6 +6,14 @@ class SheetConnection():
     """
     Class used to handle connection to Google Sheet API
     Should never be instantiated directly; use SheetConnection.get_instance()
+
+    Attributes:
+        instance
+    Methods:
+        get_instance
+        insert_record
+        get_all_records
+        overwrite_records
     """
     instance = None
 
