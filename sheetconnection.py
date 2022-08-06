@@ -15,7 +15,7 @@ class SheetConnection():
     Should never be instantiated directly; use SheetConnection.get_instance()
 
     Attributes:
-        instance
+        instance : SheetConnection
     Methods:
         get_instance
         insert_record
