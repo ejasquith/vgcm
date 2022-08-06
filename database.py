@@ -69,7 +69,7 @@ class Database:
             for key, value in kwargs.items()
             for record in self._records
             # str() allows datetimes to be compared
-            if str(value) in str(getattr(record, key))
+            if str(value).lower() in str(getattr(record, key)).lower()
         ]
         return searched_list
 
