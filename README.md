@@ -45,5 +45,3 @@ During development, the developer and purchase date attributes had to be scrappe
 
 # Credits
 
-- Code to serialize objects with datetime attributes from user12642493 on StackOverflow
-    - [https://stackoverflow.com/questions/3768895/how-to-make-a-class-json-serializable](https://stackoverflow.com/questions/3768895/how-to-make-a-class-json-serializable)
