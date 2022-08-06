@@ -33,15 +33,35 @@ During development, the developer and purchase date attributes had to be scrappe
 
 The code for this project is designed to be as reusable as possible. It is separated into four distinct python files (run.py, game.py, database.py and sheetconnection.py).
 
-run.py contains all the code used to execute the application in a command line interface. This can be considered the view in model-view-controller architecture.
+run.py contains all the code used to execute the application in a command line interface.
 
-game.py contains the logic used to digitally represent games in memory, using a class. This is the model.
+game.py contains the logic used to digitally represent games in memory, using a class.
 
-database.py contains the code to manage in-memory data storage. This is the controller.
+database.py contains the code to manage in-memory data storage.
 
 Finally, sheetconnection.py contains the code used to connect to Google Sheets.
 
 The codebase was designed in this way so that parts of the system could be slotted in and out with relative ease - if a GUI were to be developed, it could continue to use the game, database and sheetconnection files. Similarly, if it was decided to use a database such as PostgreSQL to persistently store data, the sheetconnection class could be replaced.
+
+# Features
+
+VGCM offers a way to manage and store information on a collection of video games through a command line interface.
+
+## Welcome Message
+
+Upon loading the application, the user is presented with an ASCII art style logo, and a welcome message. This is primarily intended to subconsciously let the user know that the program has loaded correctly, while also displaying the name and purpose of the software. There is also a pause in execution while the Google Sheet is loaded, so I included a status message saying "loading database" to reassure the user that the program has not crashed.
+
+![An image of the welcome message](docs/images/welcome.png)
+
+## Menu
+
+After the welcome message has been displayed, a menu is output to the user with a list of functions. The user must enter the number corresponding to the option they want to choose.
+
+![An image of the menu](docs/images/menu.png)
+
+If an invalid input is entered, the program displays an error message and the menu is displayed again.
+
+ ![An image of the menu after a user inputs an invalid choice](docs/images/invalid-menu-input.png)
 
 # Testing
 
