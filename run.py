@@ -11,8 +11,10 @@ Methods:
     main
 """
 
+import sys
 from datetime import datetime
 from tabulate import tabulate
+from gspread import GSpreadException
 from database import Database
 
 LOGO = """
@@ -151,15 +153,24 @@ def main():
     print(WELCOME_MESSAGE)
 
     print("\nLoading database...")
-    database = Database()
+    try:
+        database = Database()
+    except GSpreadException:
+        print("There was an error connecting to Google Sheets.")
+        print("Exiting.")
+        sys.exit(0)
 
     while (user_input := input(MENU)) != "5":
         if user_input == "1":
             # Create new game
             values = prompt_game_details_input(False)
             print("\nSaving game...")
-            database.create_game(**values)
-            print(f"{values['title']} successfully saved.")
+            try:
+                database.create_game(**values)
+            except GSpreadException:
+                print("There was an error connecting to Google Sheets.")
+            else:
+                print(f"{values['title']} successfully saved.")
 
         elif user_input == "2":
             # Display games
@@ -197,9 +208,14 @@ def main():
                 while (choice := input("> ").lower()) not in ("n", "no"):
                     if choice in ("y", "yes"):
                         print("\nDeleting games...")
-                        database.delete_games(**values)
-                        print("Games successfully deleted.")
-                        break
+                        try:
+                            database.delete_games(**values)
+                        except GSpreadException:
+                            print("There was an error connecting to Google Sheets.")
+                        else:
+                            print("Games successfully deleted.")
+                        finally:
+                            break
                     else:
                         print("Please enter y or n.")
             else:
