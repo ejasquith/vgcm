@@ -79,5 +79,19 @@ If an invalid input is entered, the program displays an error message and the me
     - This was due to the try block catching the exception when parsing the string, but there was only a single condition checking whether `allow_empty` was true to determine if the input should actually be accepted.
     - I changed the condition to `if not user_input and allow_empty`, which only evaluates to true if the input string is empty.
 
+# Deployment
+
+In order to run backend Python code, the app has been deployed to [Heroku](https://www.heroku.com). There are a number of steps to do this:
+
+- From your workspace, run the command `pip freeze > requirements.txt`
+- Create a Heroku account and create a new app.
+- Under the settings tab, add the config vars:
+    - `PORT: 8000`
+    - `CREDS:`
+        - Here, copy in the contents of creds.json that allow you to connect to Google Sheets.
+- Under buildpacks in the settings tab, add Python and Node.js.
+- Under the deploy tab, connect to your GitHub account and select the repository to connect to.
+- Under manual deploy, select branch main and click deploy.
+
 # Credits
 
