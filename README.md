@@ -27,6 +27,22 @@ These will include:
 
 During development, the developer and purchase date attributes had to be scrapped due to the 80 character width of the virtual terminal the project would be hosted on. This was to ensure all data is correctly presented to the user.
 
+# Development Stage
+
+## Code Architecture
+
+The code for this project is designed to be as reusable as possible. It is separated into four distinct python files (run.py, game.py, database.py and sheetconnection.py).
+
+run.py contains all the code used to execute the application in a command line interface. This can be considered the view in model-view-controller architecture.
+
+game.py contains the logic used to digitally represent games in memory, using a class. This is the model.
+
+database.py contains the code to manage in-memory data storage. This is the controller.
+
+Finally, sheetconnection.py contains the code used to connect to Google Sheets.
+
+The codebase was designed in this way so that parts of the system could be slotted in and out with relative ease - if a GUI were to be developed, it could continue to use the game, database and sheetconnection files. Similarly, if it was decided to use a database such as PostgreSQL to persistently store data, the sheetconnection class could be replaced.
+
 # Testing
 
 ## Bugs
