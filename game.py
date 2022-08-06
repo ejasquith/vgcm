@@ -21,7 +21,7 @@ class Game:
     platform : string
         platform the game was released to
     release_date : datetime
-        Date of the game's release     
+        Date of the game's release
     """
     def __init__(self, title, genre, publisher,
                  platform, release_date, ):
