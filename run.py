@@ -54,7 +54,7 @@ def format_table_output(games):
         games_properties,
         headers=["Title", "Genre", "Publisher", "Platform", "Release Date"],
         maxcolwidths=12,
-        tablefmt="grid"
+        tablefmt="grid",
     )
 
 
@@ -158,7 +158,7 @@ def main():
     except GSpreadException:
         print("There was an error connecting to Google Sheets.")
         print("Exiting.")
-        sys.exit(0)
+        sys.exit(1)
 
     while (user_input := input(MENU)) != "5":
         if user_input == "1":
@@ -211,7 +211,8 @@ def main():
                         try:
                             database.delete_games(**values)
                         except GSpreadException:
-                            print("There was an error connecting to Google Sheets.")
+                            print("There was an error",
+                                  "connecting to Google Sheets.")
                         else:
                             print("Games successfully deleted.")
                         finally:
