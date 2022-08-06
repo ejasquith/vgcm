@@ -35,10 +35,13 @@ During development, the developer and purchase date attributes had to be scrappe
     - This was because the list the values were being appended to had been declared outside the while loop, meaning the previous values were still in the list.
     - That list was then being passed to the database to create a new game, which included more values than expected, causing the error.
 - When deleting games, none would be deleted even though the correct games were found.
-    - This was because the delete_game function called find_game, which used a deep copy of the database's records.
-        - This meant that the object references were not the same as the originals, meaning comparing an object's id from the find_game function and the "same" object from the original records would return false.
-        - Subsequently, the delete_game function didn't find any objects in the original records that matched the ones it was asked to delete.
+    - This was because the `delete_game` function called `find_game`, which used a deep copy of the database's records.
+        - This meant that the object references were not the same as the originals, meaning comparing an object's id from the `find_game` function and the "same" object from the original records would return false.
+        - Subsequently, the `delete_game` function didn't find any objects in the original records that matched the ones it was asked to delete.
     - Changing find_game to create a shallow copy fixed this issue.
+- When the `prompt_date_input` function was called passing `allow_empty=True`, an invalid date would be accepted as a valid input.
+    - This was due to the try block catching the exception when parsing the string, but there was only a single condition checking whether `allow_empty` was true to determine if the input should actually be accepted.
+    - I changed the condition to `if not user_input and allow_empty`, which only evaluates to true if the input string is empty.
 
 # Credits
 
