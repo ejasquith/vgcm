@@ -63,6 +63,16 @@ If an invalid input is entered, the program displays an error message and the me
 
  ![An image of the menu after a user inputs an invalid choice](docs/images/invalid-menu-input.png)
 
+ ## Display All Games
+
+ The first option in the menu is to display all games. On selecting this, another menu is displayed asking the user what attribute to sort the list by - they can choose any of the attributes on the games (title, genre, publisher, platform, release date), or leave blank to leave the list in its default order. This menu has similar input validation to the main menu.
+
+ The list of games is then displayed in a table format, and the user is again prompted to enter a main menu choice.
+
+ ![An image of the menu displayed after selecting display all games](docs/images/display-all-menu.png)
+
+ ![An image of the table of results for displaying all games, sorted by title](docs/images/display-all-results.png)
+
 # Testing
 
 ## Bugs
