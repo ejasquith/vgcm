@@ -11,7 +11,7 @@ Methods:
     main
 """
 
-import sys
+from sys import exit
 from datetime import datetime
 from tabulate import tabulate
 from gspread import GSpreadException
@@ -158,7 +158,7 @@ def main():
     except GSpreadException:
         print("There was an error connecting to Google Sheets.")
         print("Exiting.")
-        sys.exit(1)
+        exit(1)
 
     while (user_input := input(MENU)) != "5":
         if user_input == "1":
