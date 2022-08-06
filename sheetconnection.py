@@ -1,3 +1,10 @@
+"""
+Creates SheetConnection object to handle connection
+to Google Sheets using gspread
+Classes:
+    SheetConnection
+"""
+
 import gspread
 from google.oauth2.service_account import Credentials
 
