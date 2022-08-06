@@ -73,6 +73,16 @@ If an invalid input is entered, the program displays an error message and the me
 
  ![An image of the table of results for displaying all games, sorted by title](docs/images/display-all-results.png)
 
+ ## Search For a Game
+
+ The second option is to search for a game. The user is prompted to enter game details, and they can leave each attribute blank to include all results. The search terms (aside from release date) work on whether the game's attribute contains that term - for example, searching `Title: Sonic` and `Platform: Sega Genesis` might return Sonic the Hedghog, but not Sonic CD for the Sega CD.
+
+ Once again, the user can decide which attribute the list should be sorted by.
+
+![An image of the menu prompting the user to enter game details to search for](docs/images/search-menu.png)
+
+![An image of the search results, sorted by release date](docs/images/search-results.png)
+
 # Testing
 
 ## Bugs
