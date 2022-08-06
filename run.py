@@ -5,7 +5,9 @@ Methods:
     format_table_output
     prompt_string_input
     prompt_date_input
+    prompt_sort_attribute
     prompt_game_details_input
+    sort_games
     main
 """
 
@@ -106,6 +108,23 @@ def prompt_sort_attribute():
             print("Invalid input. Please enter 1-5 or leave blank.")
 
 
+def prompt_game_details_input(allow_empty):
+    """
+    Prompts user to enter details for new Game object
+    Returns dict of inputted values
+    """
+    values = {}
+
+    print("\nEnter game details:")
+    values["title"] = prompt_string_input("Title: ", allow_empty)
+    values["genre"] = prompt_string_input("Genre: ", allow_empty)
+    values["publisher"] = prompt_string_input("Publisher: ", allow_empty)
+    values["platform"] = prompt_string_input("Platform: ", allow_empty)
+    values["release_date"] = prompt_date_input("Release date: ", allow_empty)
+
+    return values
+
+
 def sort_games(games, sort_attr):
     """
     Sorts a list of games based on user input from prompt_sort_attribute
@@ -122,23 +141,6 @@ def sort_games(games, sort_attr):
         games.sort(key=lambda game: game.release_date)
 
     return games
-
-
-def prompt_game_details_input(allow_empty):
-    """
-    Prompts user to enter details for new Game object
-    Returns dict of inputted values
-    """
-    values = {}
-
-    print("\nEnter game details:")
-    values["title"] = prompt_string_input("Title: ", allow_empty)
-    values["genre"] = prompt_string_input("Genre: ", allow_empty)
-    values["publisher"] = prompt_string_input("Publisher: ", allow_empty)
-    values["platform"] = prompt_string_input("Platform: ", allow_empty)
-    values["release_date"] = prompt_date_input("Release date: ", allow_empty)
-
-    return values
 
 
 def main():
