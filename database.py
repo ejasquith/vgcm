@@ -74,7 +74,11 @@ class Database:
             # Causes weird problems
             for record in self._records:
                 if str(value).lower() not in str(getattr(record, key)).lower():
-                    searched_list.remove(record)
+                    try:
+                        searched_list.remove(record)
+                    except ValueError:
+                        # Record has already been removed
+                        pass
         return searched_list
 
     def get_all_games(self):
