@@ -120,6 +120,14 @@ I knew from the start that I wanted some way to save data between uses of the pr
     - This worked well enough and was fairly simple to implement.
     - The main issue with this approach is that there can't be separate sessions - every user has access to the same dataset. I decided that this was a minor enough issue for a project of this scope that it was acceptable to use Google Sheets regardless.
 
+## API Error Handling
+
+When connecting to an API, such as Google Sheets, there is the possibility for errors to be thrown regardless of how well the code is written - for example, the API service may be temporarily down.  
+
+In run.py, any operations that make API requests are wrapped in a `try` block. If the program catches a `GSpreadException`, feedback is given to the user saying that the operation failed.
+
+When the database is originally loaded a the start of the program, if an API error occurs, the program calls `sys.exit(1)`, raising a `SystemExit` exception and exiting the program with a status code of 1, declaring that an error has occurred. This is because without an initial connection to the database, no other operations can be executed and the program will essentially be non-functional.
+
 # Testing
 
 ## Bugs
