@@ -97,6 +97,18 @@ The final option is to delete games. This works similarly to find games, in that
 
 ![An image of the results of the delete function, showing the output and confirmation](docs/images/delete-result.png)
 
+## Input Validation
+
+Whenever the user is prompted to enter data, the program runs validation to check that the input is acceptable. In most cases, this means checking if a string input is empty, or if a menu choice is within the accepted options. Validation also runs when the user has to enter a date, making sure it's in the format DD/MM/YYYY.
+
+![An image of the menu after a user inputs an invalid choice](docs/images/invalid-menu-input.png)
+
+![An image of the menu after a user inputs an invalid integer](docs/images/invalid-menu-int.png)
+
+![An image of validation when user attempts to enter an empty string in create game](docs/images/create-game-empty-str)
+
+![An image of date validation](docs/images/date-validation.png)
+
 # Testing
 
 ## Bugs
