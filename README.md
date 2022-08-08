@@ -178,3 +178,4 @@ The deployed project can be found at [https://vgcm.herokuapp.com/](https://vgcm.
 # Credits
 
 - Code to connect to Google Sheets adapted from Code Institute's walkthrough project, Love Sandwiches.
+- MDN, Stack Overflow, and W3Schools were used as general reference throughout the development of the project.
