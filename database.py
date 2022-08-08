@@ -6,6 +6,7 @@ Classes:
 """
 
 from datetime import datetime
+from copy import copy
 from game import Game
 from sheetconnection import SheetConnection
 
@@ -64,13 +65,16 @@ class Database:
             developer : str
             platform : str
         """
-        searched_list = [
-            record
-            for key, value in kwargs.items()
-            for record in self._records
-            # str() allows datetimes to be compared
-            if str(value).lower() in str(getattr(record, key)).lower()
-        ]
+        # Make a copy of original, which will have 
+        # non-matching records removed
+        searched_list = copy(self._records)
+        for key, value in kwargs.items():
+            # Have to iterate through original
+            # Because removing records from a list while iterating
+            # Causes weird problems
+            for record in self._records:
+                if str(value).lower() not in str(getattr(record, key)).lower():
+                    searched_list.remove(record)
         return searched_list
 
     def get_all_games(self):
