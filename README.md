@@ -1,10 +1,18 @@
 # VGCM - Video Game Collection Manager
 
+# Project Overview
+
 The aim of this project is to provide a simple application for a video game collector to manage their collection.  
 
 Maintaining a collection of any kind can be a fun and fulfilling hobby, but sometimes keeping track of everything you own can be a little overwhelming. The Video Game Collection Manager (VGCM) aims to ease this burden by keeping track of the games in your collection, letting you expand your collection without worry.
 
 # Planning Stage
+
+## Target Audience
+
+The target audience for this project is anyone who has or is interested in starting a collection of video games. The market for retro and contemporary gaming is ever expanding, especially as younger gamers are introduced to legendary franchises like Sonic the Hedgehog and Super Mario.  
+
+Anyone who has maintained a collection knows the struggle of keeping a huge spreadsheet up to date as their collection expands - this project is aimed towards those people, and proposes a simple solution to manage their hobby.
 
 ## User Stories
 
