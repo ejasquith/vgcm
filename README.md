@@ -124,6 +124,12 @@ Whenever the user is prompted to enter data, the program runs validation to chec
 - When the `prompt_date_input` function was called passing `allow_empty=True`, an invalid date would be accepted as a valid input.
     - This was due to the try block catching the exception when parsing the string, but there was only a single condition checking whether `allow_empty` was true to determine if the input should actually be accepted.
     - I changed the condition to `if not user_input and allow_empty`, which only evaluates to true if the input string is empty.
+- When searching for games with multiple filters, some games would be returned more than once.
+    - This was because for each parameter I was adding each game that matched to a list. If a game matched more than one parameter, it would be added each time.
+    - To fix this, I copied the original list into a new list, then for each parameter removed games that didn't match.
+        - This introduced a new issue, where some games would be in the list but not evaluated and as such would be in the final list despite not matching the filters.
+        - While I'm not certain on the technicalities of this issue, I thought that removing items from a list while iterating over that same list may cause issues. I then decided to iterate over the original list, which would not be changed, and remove any matches from the new list. This fixed the issue.
+
 
 # Deployment
 

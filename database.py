@@ -65,7 +65,7 @@ class Database:
             developer : str
             platform : str
         """
-        # Make a copy of original, which will have 
+        # Make a copy of original, which will have
         # non-matching records removed
         searched_list = copy(self._records)
         for key, value in kwargs.items():
