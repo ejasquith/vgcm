@@ -140,7 +140,7 @@ Whenever the user is prompted to enter data, the program runs validation to chec
 
 ![An image of the menu after a user inputs an invalid integer](docs/images/invalid-menu-int.png)
 
-![An image of validation when user attempts to enter an empty string in create game](docs/images/create-game-empty-str)
+![An image of validation when user attempts to enter an empty string in create game](docs/images/create-game-empty-str.png)
 
 ![An image of date validation](docs/images/date-validation.png)
 
