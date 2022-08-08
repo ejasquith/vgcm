@@ -149,6 +149,11 @@ When the database is originally loaded a the start of the program, if an API err
         - This introduced a new issue, where some games would be in the list but not evaluated and as such would be in the final list despite not matching the filters.
         - While I'm not certain on the technicalities of this issue, I thought that removing items from a list while iterating over that same list may cause issues. I then decided to iterate over the original list, which would not be changed, and remove any matches from the new list. This fixed the issue.
 
+## Manual Testing
+
+At every stage during development, the code was manually tested through the in-built terminal in VSCode and through the virtual terminal that the project would eventually be run on (in order to run this without deploying the project, first enter the command `node i` then `node index.js`).
+
+After implementation of each feature and fix, it was tested thoroughly to ensure it was bug free.
 
 # Deployment
 
