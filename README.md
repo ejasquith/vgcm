@@ -121,5 +121,7 @@ In order to run backend Python code, the app has been deployed to [Heroku](https
 - Under the deploy tab, connect to your GitHub account and select the repository to connect to.
 - Under manual deploy, select branch main and click deploy.
 
+The deployed project can be found at [https://vgcm.herokuapp.com/](https://vgcm.herokuapp.com/)
+
 # Credits
 
