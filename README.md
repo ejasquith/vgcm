@@ -155,6 +155,10 @@ At every stage during development, the code was manually tested through the in-b
 
 After implementation of each feature and fix, it was tested thoroughly to ensure it was bug free.
 
+## Linter
+
+During development, the PEP8 linter included with the Python package in VSCode was used to ensure that all code conformed to Python style guides.
+
 # Deployment
 
 In order to run backend Python code, the app has been deployed to [Heroku](https://www.heroku.com). There are a number of steps to do this:
