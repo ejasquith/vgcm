@@ -63,9 +63,15 @@ If an invalid input is entered, the program displays an error message and the me
 
  ![An image of the menu after a user inputs an invalid choice](docs/images/invalid-menu-input.png)
 
+ ## Create Game
+
+ The first option is to create a new game and add it to the database. The program prompts the user to enter valid inputs for each attribute, then displays confirmation that the game is saved.
+
+ ![An image of the result after selecting create game and entering its details](docs/images/create-game.png)
+
  ## Display All Games
 
- The first option in the menu is to display all games. On selecting this, another menu is displayed asking the user what attribute to sort the list by - they can choose any of the attributes on the games (title, genre, publisher, platform, release date), or leave blank to leave the list in its default order. This menu has similar input validation to the main menu.
+ The second option in the menu is to display all games. On selecting this, another menu is displayed asking the user what attribute to sort the list by - they can choose any of the attributes on the games (title, genre, publisher, platform, release date), or leave blank to leave the list in its default order. This menu has similar input validation to the main menu.
 
  The list of games is then displayed in a table format, and the user is again prompted to enter a main menu choice.
 
@@ -75,7 +81,7 @@ If an invalid input is entered, the program displays an error message and the me
 
  ## Search For Games
 
- The second option is to search for a game. The user is prompted to enter game details, and they can leave each attribute blank to include all results. The search terms (aside from release date) work on whether the game's attribute contains that term - for example, searching `Title: Sonic` and `Platform: Sega Genesis` might return Sonic the Hedghog, but not Sonic CD for the Sega CD.
+ The third option is to search for a game. The user is prompted to enter game details, and they can leave each attribute blank to include all results. The search terms (aside from release date) work on whether the game's attribute contains that term - for example, searching `Title: Sonic` and `Platform: Sega Genesis` might return Sonic the Hedghog, but not Sonic CD for the Sega CD.
 
  Once again, the user can decide which attribute the list should be sorted by.
 
@@ -85,7 +91,7 @@ If an invalid input is entered, the program displays an error message and the me
 
 ## Delete Games
 
-The third option is to delete games. This works similarly to find games, in that the user is prompted to enter game details and the result is displayed in a table. The program then asks for confirmation to delete the games, which are removed from memory and the Google Sheet is overwritten.
+The final option is to delete games. This works similarly to find games, in that the user is prompted to enter game details and the result is displayed in a table. The program then asks for confirmation to delete the games, which are removed from memory and the Google Sheet is overwritten.
 
 ![An image of the menu prompting the user to enter game details to delete](docs/images/delete-menu.png)
 
