@@ -109,6 +109,17 @@ Whenever the user is prompted to enter data, the program runs validation to chec
 
 ![An image of date validation](docs/images/date-validation.png)
 
+# Persistent Memory
+
+I knew from the start that I wanted some way to save data between uses of the program. I went through a few ideas before settling on one solution:
+- First, I intended to connect to a PostgreSQL database. This idea was rejected soon into development as I realised it was a little too complicated for my skill level.
+- I then thought about saving and reading to/from a CSV file.
+    - While this was a simple solution, I didn't understand how to download the file onto the user's computer.
+    - Forcing the user to enter a full file path without any mistakes in order to load a file also had the potential to be unnecessarily difficult and frustrating for the user.
+- Finally, I decided to connect to a Google Sheet.
+    - This worked well enough and was fairly simple to implement.
+    - The main issue with this approach is that there can't be separate sessions - every user has access to the same dataset. I decided that this was a minor enough issue for a project of this scope that it was acceptable to use Google Sheets regardless.
+
 # Testing
 
 ## Bugs
