@@ -186,7 +186,7 @@ When the database is originally loaded a the start of the program, if an API err
 
 ## Manual Testing
 
-At every stage during development, the code was manually tested through the in-built terminal in VSCode and through the virtual terminal that the project would eventually be run on (in order to run this without deploying the project, first enter the command `node i` then `node index.js`).
+At every stage during development, the code was manually tested through the in-built terminal in VSCode and through the virtual terminal that the project would eventually be run on (in order to run this without deploying the project, first enter the command `npm i` then `node index.js`).
 
 After implementation of each feature and fix, it was tested thoroughly to ensure it was bug free.
 
