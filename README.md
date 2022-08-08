@@ -2,6 +2,8 @@
 
 The aim of this project is to provide a simple application for a video game collector to manage their collection.  
 
+Maintaining a collection of any kind can be a fun and fulfilling hobby, but sometimes keeping track of everything you own can be a little overwhelming. The Video Game Collection Manager (VGCM) aims to ease this burden by keeping track of the games in your collection, letting you expand your collection without worry.
+
 # Planning Stage
 
 ## User Stories
